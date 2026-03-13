@@ -14,8 +14,13 @@ export default function Hero() {
         initial={{ opacity:0, y:40 }}
         animate={{ opacity:1, y:0 }}
         transition={{ duration:1 }}
-        className="text-7xl font-bold tracking-tight"
+        className="relative text-7xl font-bold tracking-tight"
       >
+        {/* Glow layer */}
+        <span
+          className="absolute inset-0 blur-[80px] opacity-60 bg-red-600 rounded-full -z-10 scale-110"
+          aria-hidden="true"
+        />
         Kardinam Edits
       </motion.h1>
 
