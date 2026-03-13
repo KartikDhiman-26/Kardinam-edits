@@ -1,27 +1,17 @@
-import { useRef, useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import Tilt from "react-parallax-tilt"
 
 export default function VideoCard({ src, setActiveVideo, ratio }) {
-
-  const videoRef = useRef()
-  const [loaded, setLoaded] = useState(false)
 
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.4
   })
 
-  useEffect(() => {
-    if (inView) {
-      setLoaded(true)
-    }
-  }, [inView])
-
   return (
 
     <Tilt
-      glareEnable={true}
+      glareEnable
       glareMaxOpacity={0.3}
       scale={1.05}
       transitionSpeed={2000}
@@ -36,17 +26,14 @@ export default function VideoCard({ src, setActiveVideo, ratio }) {
         }`}
       >
 
-        {loaded ? (
-          <video
-            ref={videoRef}
-            src={src}
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover"
+        {inView ? (
+
+          <iframe
+            src={`https://drive.google.com/file/d/${src}/preview`}
+            className="w-full h-full pointer-events-none"
+            allow="autoplay"
           />
+
         ) : (
 
           <div className="w-full h-full bg-black flex items-center justify-center text-gray-600 text-sm">
