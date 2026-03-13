@@ -8,6 +8,8 @@ export default function VideoCard({ src, setActiveVideo, ratio }) {
     threshold: 0.4
   })
 
+  const videoURL = `https://drive.google.com/uc?export=download&id=${src}`
+
   return (
 
     <Tilt
@@ -28,15 +30,19 @@ export default function VideoCard({ src, setActiveVideo, ratio }) {
 
         {inView ? (
 
-          <iframe
-            src={`https://drive.google.com/file/d/${src}/preview`}
-            className="w-full h-full pointer-events-none"
-            allow="autoplay"
+          <video
+            src={videoURL}
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="none"
+            className="w-full h-full object-cover"
           />
 
         ) : (
 
-          <div className="w-full h-full bg-black flex items-center justify-center text-gray-600 text-sm">
+          <div className="w-full h-full bg-black flex items-center justify-center text-gray-500">
             Loading preview...
           </div>
 

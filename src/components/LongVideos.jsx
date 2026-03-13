@@ -5,13 +5,13 @@ import VideoModal from "./VideoModal"
 
 export default function LongVideos() {
 
-  const [activeVideo,setActiveVideo] = useState(null)
+  const [activeVideo, setActiveVideo] = useState(null)
 
   const videos = [
-    "/videos/long1.mp4",
-    "/videos/long2.mp4",
-    "/videos/long3.mp4",
-    "/videos/long4.mp4"
+    "1k0fJFIIzOotFj2at2Y9zVAZBQ1mPGB6B",
+    "1If0-0K688oKS9ArAimoxvbGRskDnwdyq",
+    "1qKScIV0ru9pquLHexgwlDNDlOOCt3xX6",
+    "1CBhUr9IR8dsF9DlBX7Wp9L_HfhlpaxGd"
   ]
 
   return (
@@ -47,6 +47,5 @@ export default function LongVideos() {
       />
 
     </section>
-
   )
 }

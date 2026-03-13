@@ -10,7 +10,7 @@ export default function VideoModal({ video, close }) {
     >
 
       <div
-        className="w-[350px] md:w-[420px] aspect-[9/16]"
+        className="w-[350px] md:w-[500px] aspect-[9/16]"
         onClick={(e) => e.stopPropagation()}
       >
 
