@@ -1,18 +1,19 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
+import VideoCard from "./VideoCard"
+import VideoModal from "./VideoModal"
 
 export default function ReelsSection() {
 
   const [activeVideo, setActiveVideo] = useState(null)
 
-  // Put your YouTube video IDs here
   const reels = [
-    "wjSuFITGDkA",
-    "od6Y9gJVoUE",
-    "z2FDnduITIg",
-    "rJ7TxTfd-Ug",
-    "z2FDnduITIg",
-    "E2GyeAY6srw"
+    "1nc_kF2YA0n3ZOYmKffpi0lSHFXpbZLRc",
+    "1GTXlWti4EB-xwFgJXahtS4n5Z3s48h_w",
+    "1ms_POHrcFm5Nuq-rd2kwOC0rxZtpkAwd",
+    "1h4H6i-CRE_Gxl1cl0Szl9uqb9ZUdpWeX",
+    "1nomJMy0ZqPAYy1i1EuZyPZDkzA_1xRu8",
+    "1U-AN_iKrU9rMsJSrEnm7pRkQa3Tu1aho"
   ]
 
   return (
@@ -31,57 +32,23 @@ export default function ReelsSection() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
 
-        {reels.map((id, i) => (
-
-          <div
+        {reels.map((video,i)=>(
+          <VideoCard
             key={i}
-            onClick={() => setActiveVideo(id)}
-            className="cursor-pointer rounded-xl overflow-hidden aspect-[9/16] bg-black"
-          >
-
-            <iframe
-              className="w-full h-full pointer-events-none"
-              src={`https://www.youtube.com/embed/${id}?controls=0&modestbranding=1`}
-              title="YouTube reel"
-              frameBorder="0"
-              allowFullScreen
-            />
-
-          </div>
-
+            src={video}
+            setActiveVideo={setActiveVideo}
+            ratio="9:16"
+          />
         ))}
 
       </div>
 
-      {/* Video Modal */}
-
-      {activeVideo && (
-
-        <div
-          onClick={() => setActiveVideo(null)}
-          className="fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center z-50"
-        >
-
-          <div
-            className="w-[350px] md:w-[420px] aspect-[9/16]"
-            onClick={(e) => e.stopPropagation()}
-          >
-
-            <iframe
-              className="w-full h-full rounded-xl"
-              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
-              title="YouTube reel"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            />
-
-          </div>
-
-        </div>
-
-      )}
+      <VideoModal
+        video={activeVideo}
+        close={()=>setActiveVideo(null)}
+      />
 
     </section>
+
   )
 }
